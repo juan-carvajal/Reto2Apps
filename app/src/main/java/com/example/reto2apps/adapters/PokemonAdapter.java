@@ -30,6 +30,8 @@ public class PokemonAdapter extends
         RecyclerView.Adapter<PokemonAdapter.ViewHolder> {
 
 
+    private static final String TAG = "POKE_ADAPTER";
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTextView;
         public Button messageButton;
@@ -76,7 +78,7 @@ public class PokemonAdapter extends
         if(pokemon.sprites.size() > 0){
             Glide
                     .with(activity)
-                    .load(pokemon.sprites.get(0))
+                    .load(pokemon.sprites.get(pokemon.sprites.size() - 1))
                     .apply(new RequestOptions()
                             .fitCenter()
                             .format(DecodeFormat.PREFER_ARGB_8888)
@@ -97,6 +99,7 @@ public class PokemonAdapter extends
                 Intent intent = new Intent(activity.getBaseContext(), PokemonView.class);
                 intent.putExtra("pokemon_id", pokemon.id);
                 intent.putExtra("user_name", userName);
+                Log.d(TAG, "USERNAME: " + userName);
                 activity.startActivity(intent);
 
             }

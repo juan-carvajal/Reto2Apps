@@ -222,7 +222,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-
+        this.username = getIntent().getStringExtra("user_name");
         RecyclerView rvPoke = (RecyclerView) findViewById(R.id.rvPoke);
         adapter = new PokemonAdapter(this.pokemons, this, username);
         rvPoke.setAdapter(adapter);
@@ -231,7 +231,6 @@ public class HomeScreen extends AppCompatActivity {
         // adapter.notifyDataSetChanged();
 
 
-        this.username = getIntent().getStringExtra("user_name");
         Log.d(TAG, "Current username: " + this.username);
         ProgressDialog progress = new ProgressDialog(this);
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
